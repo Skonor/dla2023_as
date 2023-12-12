@@ -1,5 +1,5 @@
-from src.loss.WeightedCELossWrapper import WeightedCELossWrapper as WeightedCe
+from src.loss.WeightedCELossWrapper import WeightedCELossWrapper as WeightedCE
 
 __all__ = [
-    "WeigthedCE"
+    "WeightedCE"
 ]

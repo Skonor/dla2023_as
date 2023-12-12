@@ -1,0 +1,19 @@
+
+train:  75%|███████████████████████████████████████████████████████▌                  | 75/100 [00:01<00:00, 39.05it/s]
+Train Epoch: 1 [0/100 (0%)] Loss: 0.853054
+train:  99%|█████████████████████████████████████████████████████████████████████████▎| 99/100 [00:02<00:00, 39.13it/s]
+val: 100%|███████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 59.21it/s]
+Traceback (most recent call last):
+  File "/Users/mihailgorbunov/dla/as/dla2023_as/train.py", line 111, in <module>
+    main(config)
+  File "/Users/mihailgorbunov/dla/as/dla2023_as/train.py", line 68, in main
+    trainer.train()
+  File "/Users/mihailgorbunov/dla/as/dla2023_as/src/base/base_trainer.py", line 72, in train
+    self._train_process()
+  File "/Users/mihailgorbunov/dla/as/dla2023_as/src/base/base_trainer.py", line 85, in _train_process
+    result = self._train_epoch(epoch)
+  File "/Users/mihailgorbunov/dla/as/dla2023_as/src/trainer/trainer.py", line 123, in _train_epoch
+    val_log = self._evaluation_epoch(epoch, part, dataloader)
+  File "/Users/mihailgorbunov/dla/as/dla2023_as/src/trainer/trainer.py", line 177, in _evaluation_epoch
+    self.evaluation_metrics.update(metric.name, metric(np.array(log_probs), np.array(is_spoofed)))
+TypeError: __call__() takes 2 positional arguments but 3 were given

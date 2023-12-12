@@ -15,18 +15,15 @@ def get_dataloaders(configs: ConfigParser):
 
         # set train augmentations
         if split == 'train':
-            wave_augs, spec_augs = src.augmentations.from_configs(configs)
             drop_last = True
         else:
-            wave_augs, spec_augs = None, None
             drop_last = False
 
         # create and join datasets
         datasets = []
         for ds in params["datasets"]:
             datasets.append(configs.init_obj(
-                ds, src.datasets, config_parser=configs,
-                wave_augs=wave_augs, spec_augs=spec_augs))
+                ds, src.datasets, config_parser=configs))
         assert len(datasets)
         if len(datasets) > 1:
             dataset = ConcatDataset(datasets)

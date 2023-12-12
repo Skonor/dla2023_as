@@ -1,0 +1,27 @@
+train:   0%|                                                                                   | 0/100 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/Users/mihailgorbunov/dla/as/dla2023_as/train.py", line 111, in <module>
+    main(config)
+  File "/Users/mihailgorbunov/dla/as/dla2023_as/train.py", line 68, in main
+    trainer.train()
+  File "/Users/mihailgorbunov/dla/as/dla2023_as/src/base/base_trainer.py", line 72, in train
+    self._train_process()
+  File "/Users/mihailgorbunov/dla/as/dla2023_as/src/base/base_trainer.py", line 85, in _train_process
+    result = self._train_epoch(epoch)
+  File "/Users/mihailgorbunov/dla/as/dla2023_as/src/trainer/trainer.py", line 83, in _train_epoch
+    for batch_idx, batch in enumerate(
+  File "/Users/mihailgorbunov/opt/anaconda3/lib/python3.9/site-packages/tqdm/std.py", line 1180, in __iter__
+    for obj in iterable:
+  File "/Users/mihailgorbunov/dla/as/dla2023_as/src/utils/util.py", line 33, in inf_loop
+    yield from loader
+  File "/Users/mihailgorbunov/opt/anaconda3/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 630, in __next__
+    data = self._next_data()
+  File "/Users/mihailgorbunov/opt/anaconda3/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 674, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/Users/mihailgorbunov/opt/anaconda3/lib/python3.9/site-packages/torch/utils/data/_utils/fetch.py", line 51, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/Users/mihailgorbunov/opt/anaconda3/lib/python3.9/site-packages/torch/utils/data/_utils/fetch.py", line 51, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/Users/mihailgorbunov/opt/anaconda3/lib/python3.9/site-packages/torch/utils/data/dataset.py", line 61, in __getitem__
+    raise NotImplementedError("Subclasses of Dataset should implement __getitem__.")
+NotImplementedError: Subclasses of Dataset should implement __getitem__.

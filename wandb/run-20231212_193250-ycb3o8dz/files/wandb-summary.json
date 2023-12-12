@@ -1,0 +1,1 @@
+{"epoch_": 1, "_timestamp": 1702398788.027125, "learning rate_train": 0.0018735220772352068, "loss_train": 0.7208920067548752, "grad norm_train": 0.7928880143165589, "_runtime": 17.907299995422363, "_step": 100, "steps_per_sec_train": 0.9447411456497976, "steps_per_sec_val": 0.9862195541695883, "EERMetric_val": 0, "_wandb": {"runtime": 16}}

@@ -1,4 +1,4 @@
-from dla2023_as.src.model.dummy_model import DummyModelModel
+from src.model.dummy_model import DummyModel
 
 
 __all__ = [

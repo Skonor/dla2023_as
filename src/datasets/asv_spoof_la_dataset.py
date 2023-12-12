@@ -7,7 +7,7 @@ from torch.utils.data import Dataset
 
 class ASVspoof2019LA(Dataset):
     def __init__(self, data_dir, part='train', limit=None, max_len=None, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super().__init__()
 
         data_dir = Path(data_dir)
         self.max_len = max_len
@@ -17,7 +17,7 @@ class ASVspoof2019LA(Dataset):
         else:
             protocol_path = data_dir / 'LA' / 'LA' / 'ASVspoof2019_LA_cm_protocols' / f'ASVspoof2019.LA.cm.{part}.trl.txt'
 
-        self.flac_dir = data_dir / 'LA' / 'LA' / f'ASVspoof2019_LA_{part}.flac'
+        self.flac_dir = data_dir / 'LA' / 'LA' / f'ASVspoof2019_LA_{part}' / 'flac'
 
         with open(protocol_path, 'r') as f:
             self.index = f.read().splitlines()
@@ -31,7 +31,7 @@ class ASVspoof2019LA(Dataset):
         return len(self.index)
 
 
-    def _getitem__(self, item):
+    def __getitem__(self, item):
         _, utterenceID, _, _, IsSpoofed = self.index[item].split()
         audio_path = self.flac_dir /  (utterenceID + '.flac')
 
@@ -47,5 +47,6 @@ class ASVspoof2019LA(Dataset):
 
         return {
             "audio": audio_tensor,
-            "is_spoofed": is_spoofed
+            "is_spoofed": is_spoofed,
+            "audio_path": audio_path
         }

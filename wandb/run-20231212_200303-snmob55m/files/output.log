@@ -1,0 +1,21 @@
+
+train:  58%|██████████████████████████████████████████▉                               | 58/100 [00:01<00:01, 34.01it/s]
+Train Epoch: 1 [0/100 (0%)] Loss: 0.853054
+train:  99%|█████████████████████████████████████████████████████████████████████████▎| 99/100 [00:03<00:00, 32.04it/s]
+val: 100%|███████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 58.17it/s]
+Traceback (most recent call last):
+  File "/Users/mihailgorbunov/dla/as/dla2023_as/train.py", line 111, in <module>
+    main(config)
+  File "/Users/mihailgorbunov/dla/as/dla2023_as/train.py", line 68, in main
+    trainer.train()
+  File "/Users/mihailgorbunov/dla/as/dla2023_as/src/base/base_trainer.py", line 72, in train
+    self._train_process()
+  File "/Users/mihailgorbunov/dla/as/dla2023_as/src/base/base_trainer.py", line 85, in _train_process
+    result = self._train_epoch(epoch)
+  File "/Users/mihailgorbunov/dla/as/dla2023_as/src/trainer/trainer.py", line 123, in _train_epoch
+    val_log = self._evaluation_epoch(epoch, part, dataloader)
+  File "/Users/mihailgorbunov/dla/as/dla2023_as/src/trainer/trainer.py", line 176, in _evaluation_epoch
+    self.evaluation_metrics.update(metric.name, metric(np.array(log_probs), np.array(is_spoofed)))
+  File "/Users/mihailgorbunov/dla/as/dla2023_as/src/metric/EERMetric.py", line 53, in __call__
+    return compute_eer(log_probs[is_spoofed == 0][0], log_probs[is_spoofed == 1][1])[0]
+IndexError: index 1 is out of bounds for axis 0 with size 1

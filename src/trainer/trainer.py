@@ -49,10 +49,10 @@ class Trainer(BaseTrainer):
         self.log_step = 50
 
         self.train_metrics = MetricTracker(
-            "loss", "grad norm", *[m.name for m in self.metrics], writer=self.writer
+            "loss", "grad norm", writer=self.writer
         )
         self.evaluation_metrics = MetricTracker(
-            "loss", *[m.name for m in self.metrics], writer=self.writer
+            *[m.name for m in self.metrics], writer=self.writer
         )
 
     @staticmethod
@@ -60,7 +60,7 @@ class Trainer(BaseTrainer):
         """
         Move all necessary tensors to the HPU
         """
-        for tensor_for_gpu in ["auido", "is_spoofed"]:
+        for tensor_for_gpu in ["audio", "is_spoofed"]:
             batch[tensor_for_gpu] = batch[tensor_for_gpu].to(device)
         return batch
 
@@ -146,8 +146,6 @@ class Trainer(BaseTrainer):
                 self.lr_scheduler.step()
 
             metrics.update("loss", batch["loss"].item())
-            for met in self.metrics:
-                metrics.update(met.name, met(**batch))
         return batch
 
     def _evaluation_epoch(self, epoch, part, dataloader):
@@ -174,9 +172,10 @@ class Trainer(BaseTrainer):
                 is_spoofed.extend(batch['is_spoofed'].cpu().tolist())
                 
         self.writer.set_step(epoch * self.len_epoch, part)
-        self._log_scalars(self.evaluation_metrics)
-        for metric in self.evaluation_metrics:
+        for metric in self.metrics:
             self.evaluation_metrics.update(metric.name, metric(np.array(log_probs), np.array(is_spoofed)))
+
+        self._log_scalars(self.evaluation_metrics)
 
         # add histogram of model parameters to the tensorboard
         # no

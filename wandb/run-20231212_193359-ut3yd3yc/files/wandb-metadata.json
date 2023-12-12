@@ -1,0 +1,45 @@
+{
+    "os": "macOS-10.16-x86_64-i386-64bit",
+    "python": "3.9.7",
+    "heartbeatAt": "2023-12-12T16:34:00.081449",
+    "startedAt": "2023-12-12T16:33:59.067972",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "-c",
+        "src/configs/DummyModel_configs/one_batch_test.json"
+    ],
+    "state": "running",
+    "program": "/Users/mihailgorbunov/dla/as/dla2023_as/train.py",
+    "codePath": "train.py",
+    "git": {
+        "remote": "git@github.com:Skonor/dla2023_as.git",
+        "commit": "80aa6e0c314fb13c801140e8e3681363b8b16907"
+    },
+    "email": "gorbunovmikh73@gmail.com",
+    "root": "/Users/mihailgorbunov/dla/as/dla2023_as",
+    "host": "MacBook-Air-Mihail-3.local",
+    "username": "mihailgorbunov",
+    "executable": "/Users/mihailgorbunov/opt/anaconda3/bin/python",
+    "cpu_count": 2,
+    "cpu_count_logical": 4,
+    "cpu_freq": {
+        "current": 1600,
+        "min": 1600,
+        "max": 1600
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 1600,
+            "min": 1600,
+            "max": 1600
+        }
+    ],
+    "disk": {
+        "total": 233.46913528442383,
+        "used": 185.79052734375
+    },
+    "memory": {
+        "total": 16.0
+    }
+}

@@ -29,7 +29,7 @@ def collate_fn(dataset_items: List[dict]):
     is_spoofed = torch.tensor(is_spoofed).long()
 
     return {
-        'auido': batch_audio,
+        'audio': batch_audio,
         'audio_length': audio_length,
         'audio_path': audio_path,
         'is_spoofed': is_spoofed

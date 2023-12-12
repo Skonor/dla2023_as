@@ -5,8 +5,8 @@ from src.base import BaseModel
 
 
 class DummyModel(BaseModel):
-    def __init__(self, n_feats, n_class, fc_hidden=2, **batch):
-        super().__init__(n_feats, n_class, **batch)
+    def __init__(self, fc_hidden=2, **batch):
+        super().__init__(**batch)
         self.net = Sequential(
             # people say it can aproximate any function...
             nn.Linear(in_features=1, out_features=fc_hidden),

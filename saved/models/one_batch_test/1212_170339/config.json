@@ -1,0 +1,79 @@
+{
+    "name": "one_batch_test",
+    "n_gpu": 1,
+    "arch": {
+        "type": "DummyModel",
+        "args": {
+            "fc_hidden": 2
+        }
+    },
+    "data": {
+        "train": {
+            "batch_size": 2,
+            "num_workers": 0,
+            "datasets": [
+                {
+                    "type": "ASVspoofDataset",
+                    "args": {
+                        "part": "train",
+                        "limit": 2
+                    }
+                }
+            ]
+        },
+        "val": {
+            "batch_size": 2,
+            "num_workers": 0,
+            "datasets": [
+                {
+                    "type": "ASVspoofDataset",
+                    "args": {
+                        "part": "train",
+                        "limit": 2
+                    }
+                }
+            ]
+        }
+    },
+    "optimizer": {
+        "type": "SGD",
+        "args": {
+            "lr": 0.01
+        }
+    },
+    "loss": {
+        "type": "WeightedCE",
+        "args": {
+            "spoof_coef": 1.0,
+            "bonafide_coef": 9.0
+        }
+    },
+    "metrics": [
+        {
+            "type": "EERMetric",
+            "args": {
+                "name": "EER"
+            }
+        }
+    ],
+    "lr_scheduler": {
+        "type": "OneCycleLR",
+        "args": {
+            "steps_per_epoch": 100,
+            "epochs": 10,
+            "anneal_strategy": "cos",
+            "max_lr": 0.01,
+            "pct_start": 0.2
+        }
+    },
+    "trainer": {
+        "epochs": 10,
+        "save_dir": "saved/",
+        "save_period": 300,
+        "verbosity": 2,
+        "visualize": "wandb",
+        "wandb_project": "as_project",
+        "len_epoch": 100,
+        "grad_norm_clip": 10
+    }
+}

@@ -1,0 +1,8 @@
+2023-12-12 18:32:43,941 - train - INFO - DummyModel(
+  (net): Sequential(
+    (0): Linear(in_features=1, out_features=2, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=2, out_features=2, bias=True)
+  )
+)
+Trainable parameters: 10
