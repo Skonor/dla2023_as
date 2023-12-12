@@ -1,5 +1,5 @@
-from src.loss.CTCLossWrapper import CTCLossWrapper as CTCLoss
+from src.loss.WeightedCELossWrapper import WeightedCELossWrapper as WeightedCe
 
 __all__ = [
-    "CTCLoss"
+    "WeigthedCE"
 ]

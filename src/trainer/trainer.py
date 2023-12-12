@@ -2,6 +2,7 @@ import random
 from pathlib import Path
 from random import shuffle
 
+import numpy as np
 import PIL
 import pandas as pd
 import torch
@@ -135,7 +136,7 @@ class Trainer(BaseTrainer):
             batch["logits"] = outputs
 
         batch["log_probs"] = F.log_softmax(batch["logits"], dim=-1)
-        
+
         batch["loss"] = self.criterion(**batch)
         if is_train:
             batch["loss"].backward()
@@ -144,9 +145,9 @@ class Trainer(BaseTrainer):
             if self.lr_scheduler is not None:
                 self.lr_scheduler.step()
 
-        metrics.update("loss", batch["loss"].item())
-        for met in self.metrics:
-            metrics.update(met.name, met(**batch))
+            metrics.update("loss", batch["loss"].item())
+            for met in self.metrics:
+                metrics.update(met.name, met(**batch))
         return batch
 
     def _evaluation_epoch(self, epoch, part, dataloader):
@@ -158,19 +159,24 @@ class Trainer(BaseTrainer):
         """
         self.model.eval()
         self.evaluation_metrics.reset()
+
+        log_probs = []
+        is_spoofed = []
+
         with torch.no_grad():
             for batch_idx, batch in tqdm(
                     enumerate(dataloader),
                     desc=part,
                     total=len(dataloader),
             ):
-                batch = self.process_batch(
-                    batch,
-                    is_train=False,
-                    metrics=self.evaluation_metrics,
-                )
-            self.writer.set_step(epoch * self.len_epoch, part)
-            self._log_scalars(self.evaluation_metrics)
+                batch = self.process_batch(batch, False, self.evaluation_metrics)
+                log_probs.extend(batch['log_probs'].cpu().tolist())
+                is_spoofed.extend(batch['is_spoofed'].cpu().tolist())
+                
+        self.writer.set_step(epoch * self.len_epoch, part)
+        self._log_scalars(self.evaluation_metrics)
+        for metric in self.evaluation_metrics:
+            self.evaluation_metrics.update(metric.name, metric(np.array(log_probs), np.array(is_spoofed)))
 
         # add histogram of model parameters to the tensorboard
         # no
