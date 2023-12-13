@@ -19,7 +19,6 @@
           "args": {
             "data_dir": "/kaggle/input/asvpoof-2019-dataset", 
             "part": "eval",
-            "limit": 32,
             "max_len": 64000
           }
         }
@@ -34,7 +33,6 @@
           "args": {
             "data_dir": "/kaggle/input/asvpoof-2019-dataset",
             "part": "dev",
-            "limit": 32,
             "max_len": 64000
           }
         }
@@ -49,7 +47,6 @@
           "args": {
             "data_dir": "/kaggle/input/asvpoof-2019-dataset",
             "part": "eval",
-            "limit": 32,
             "max_len": 64000
           }
         }
