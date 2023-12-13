@@ -2,7 +2,7 @@
   "name": "Ablation5",
   "n_gpu": 1,
   "arch": {
-    "type": "RawNet2Ablation",
+    "type": "RawNet2Ablations",
     "args": {
       "sinc_filter_length": 1024,
       "hidden_channels": [20, 128],

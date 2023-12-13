@@ -5,5 +5,6 @@ from src.model.rawnet2_ablations import RawNet2Ablations
 
 __all__ = [
     "DummyModel",
-    "RawNet2"
+    "RawNet2",
+    "RawNet2Ablations"
 ]
