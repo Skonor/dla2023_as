@@ -1,5 +1,0 @@
-LA_1 LA_T_01 - - spoof
-LA_1 LA_T_02 - - bonafide
-LA_1 LA_T_03 - - bonafide
-LA_1 LA_T_04 - - spoof
-LA_1 LA_T_05 - - spoof
