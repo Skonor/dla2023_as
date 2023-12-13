@@ -1,0 +1,96 @@
+{
+  "name": "train RawNet2",
+  "n_gpu": 1,
+  "arch": {
+    "type": "RawNet2",
+    "args": {
+      "sinc_filter_length": 1024,
+      "hidden_channels": [20, 128],
+      "gru_dim": 1024 
+    }
+  },
+  "data": {
+    "train": {
+      "batch_size": 32,
+      "num_workers": 0,
+      "datasets": [
+        {
+          "type": "ASVspoofDataset",
+          "args": {
+            "data_dir": "/kaggle/input/asvpoof-2019-dataset", 
+            "part": "eval",
+            "limit": 32,
+            "max_len": 64000
+          }
+        }
+      ]
+    },
+    "dev": {
+      "batch_size": 32,
+      "num_workers": 0,
+      "datasets": [
+        { 
+          "type": "ASVspoofDataset",
+          "args": {
+            "data_dir": "/kaggle/input/asvpoof-2019-dataset",
+            "part": "dev",
+            "limit": 32,
+            "max_len": 64000
+          }
+        }
+      ]
+    },
+    "eval": {
+      "batch_size": 32,
+      "num_workers": 0,
+      "datasets": [
+        { 
+          "type": "ASVspoofDataset",
+          "args": {
+            "data_dir": "/kaggle/input/asvpoof-2019-dataset",
+            "part": "eval",
+            "limit": 32,
+            "max_len": 64000
+          }
+        }
+      ]
+    }
+  },
+  "optimizer": {
+    "type": "AdamW",
+    "args": {
+        "lr": 1e-4,
+        "weight_decay": 1e-4
+    }
+  },
+  "loss": {
+    "type": "WeightedCE",
+    "args": {
+      "spoof_coef": 1.0,
+      "bonafide_coef": 9.0
+    }
+  },
+  "metrics": [
+    {
+      "type": "EERMetric",
+      "args": {
+      }
+    }
+  ],
+  "lr_scheduler": {
+    "type": "ConstantLR",
+    "args": {
+      "factor": 1.0
+    }
+  },
+  "trainer": {
+    "epochs": 15,
+    "save_dir": "saved/",
+    "save_period": 5,
+    "verbosity": 2,
+    "visualize": "wandb",
+    "wandb_project": "as_project",
+    "len_epoch": 5000,
+    "grad_norm_clip": 10
+  }
+}
