@@ -11,21 +11,21 @@
   },
   "data": {
     "train": {
-      "batch_size": 32,
+      "batch_size": 64,
       "num_workers": 0,
       "datasets": [
         {
           "type": "ASVspoofDataset",
           "args": {
             "data_dir": "/kaggle/input/asvpoof-2019-dataset", 
-            "part": "eval",
+            "part": "train",
             "max_len": 64000
           }
         }
       ]
     },
     "dev": {
-      "batch_size": 32,
+      "batch_size": 64,
       "num_workers": 0,
       "datasets": [
         { 
@@ -39,7 +39,7 @@
       ]
     },
     "eval": {
-      "batch_size": 32,
+      "batch_size": 64,
       "num_workers": 0,
       "datasets": [
         { 
@@ -81,7 +81,7 @@
     }
   },
   "trainer": {
-    "epochs": 15,
+    "epochs": 10,
     "save_dir": "saved/",
     "save_period": 5,
     "verbosity": 2,
