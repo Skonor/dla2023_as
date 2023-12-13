@@ -50,5 +50,5 @@ class EERMetric(BaseMetric):
 
     def __call__(self, log_probs, is_spoofed, **batch):
 
-        return compute_eer(log_probs[is_spoofed == 0][:, 0], log_probs[is_spoofed == 1][:, 1])[0]
+        return compute_eer(log_probs[is_spoofed == 0][:, 0], log_probs[is_spoofed == 1][:, 0])[0]
         
