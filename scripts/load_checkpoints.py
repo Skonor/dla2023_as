@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 URL_LINKS = {
-    'rawnet2': 'https://drive.google.com/id=182HC2ZKUY45Gsjj_6SUpA9WuZ1p-0P6g'
+    'rawnet2': 'https://drive.google.com/uc?id=182HC2ZKUY45Gsjj_6SUpA9WuZ1p-0P6g'
 }
 
 def main():
