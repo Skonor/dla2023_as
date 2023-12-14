@@ -21,14 +21,12 @@ def main(config, out_file):
     # define cpu or gpu if possible
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    # text_encoder
-    text_encoder = config.get_text_encoder()
 
     # setup data_loader instances
-    dataloaders = get_dataloaders(config, text_encoder)
+    dataloaders = get_dataloaders(config)
 
     # build model architecture
-    model = config.init_obj(config["arch"], module_model, n_class=len(text_encoder))
+    model = config.init_obj(config["arch"], module_model)
     logger.info(model)
 
     logger.info("Loading checkpoint: {} ...".format(config.resume))
@@ -58,18 +56,14 @@ def main(config, out_file):
             )
             batch["probs"] = batch["log_probs"].exp().cpu()
             batch["argmax"] = batch["probs"].argmax(-1)
-            lm_preds = text_encoder.ctc_lm_beam_search(batch['log_probs'].cpu(), batch['log_probs_length'].cpu(), beam_size=500) 
             for i in range(len(batch["text"])):
                 argmax = batch["argmax"][i]
                 argmax = argmax[: int(batch["log_probs_length"][i])]
                 results.append(
                     {
-                        "ground_truth": batch["text"][i],
-                        "pred_text_argmax": text_encoder.ctc_decode(argmax.cpu().numpy()),
-                        "pred_text_beam_search": text_encoder.ctc_beam_search(
-                            batch["probs"][i], batch["log_probs_length"][i], beam_size=10
-                        )[:10],
-                        "pred_text_lm": lm_preds[i]
+                        "audio_path": batch["audio_path"][i],
+                        "is_spoofed": batch['is_spoofed'][i].cpu().item(),
+                        "is_spoofed_pred_prob": batch["probs"][i, 0].cpu().item()
                     }
                 )
     with Path(out_file).open("w") as f:
