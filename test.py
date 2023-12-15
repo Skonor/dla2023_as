@@ -57,7 +57,7 @@ def main(config, out_file):
                     {
                         "audio_path": batch["audio_path"][i],
                         "is_spoofed": batch['is_spoofed'][i].cpu().item(),
-                        "is_spoofed_pred_prob": batch["probs"][i, 0].cpu().item()
+                        "is_spoofed_pred_prob": batch["probs"][i, 1].cpu().item()
                     }
                 )
     with Path(out_file).open("w") as f:

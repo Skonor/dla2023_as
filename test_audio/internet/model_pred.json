@@ -1,0 +1,17 @@
+[
+  {
+    "audio_path": "/Users/mihailgorbunov/dla/as/dla2023_as/test_audio/internet/shrek.flac",
+    "is_spoofed": -1,
+    "is_spoofed_pred_prob": 5.518877514987253e-06
+  },
+  {
+    "audio_path": "/Users/mihailgorbunov/dla/as/dla2023_as/test_audio/internet/mario.flac",
+    "is_spoofed": -1,
+    "is_spoofed_pred_prob": 0.00016533187590539455
+  },
+  {
+    "audio_path": "/Users/mihailgorbunov/dla/as/dla2023_as/test_audio/internet/say_my_name.flac",
+    "is_spoofed": -1,
+    "is_spoofed_pred_prob": 0.00016798896831460297
+  }
+]

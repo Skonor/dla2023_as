@@ -1,17 +1,17 @@
 [
   {
+    "audio_path": "/Users/mihailgorbunov/dla/as/dla2023_as/test_audio/kaggle_test/audio_3.flac",
+    "is_spoofed": -1,
+    "is_spoofed_pred_prob": 0.9999936819076538
+  },
+  {
     "audio_path": "/Users/mihailgorbunov/dla/as/dla2023_as/test_audio/kaggle_test/audio_2.flac",
     "is_spoofed": -1,
-    "is_spoofed_pred_prob": 5.771958967670798e-06
+    "is_spoofed_pred_prob": 0.9999942779541016
   },
   {
     "audio_path": "/Users/mihailgorbunov/dla/as/dla2023_as/test_audio/kaggle_test/audio_1.flac",
     "is_spoofed": -1,
-    "is_spoofed_pred_prob": 1.028864789986983e-05
-  },
-  {
-    "audio_path": "/Users/mihailgorbunov/dla/as/dla2023_as/test_audio/kaggle_test/audio_3.flac",
-    "is_spoofed": -1,
-    "is_spoofed_pred_prob": 6.3190364016918465e-06
+    "is_spoofed_pred_prob": 0.9999897480010986
   }
 ]

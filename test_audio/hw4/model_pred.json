@@ -1,32 +1,32 @@
 [
   {
-    "audio_path": "/Users/mihailgorbunov/dla/as/dla2023_as/test_audio/hw4/audio_1_generated.wav",
-    "is_spoofed": -1,
-    "is_spoofed_pred_prob": 0.0005564611637964845
-  },
-  {
     "audio_path": "/Users/mihailgorbunov/dla/as/dla2023_as/test_audio/hw4/audio_1.wav",
     "is_spoofed": -1,
-    "is_spoofed_pred_prob": 7.731980986136477e-06
+    "is_spoofed_pred_prob": 0.9999922513961792
   },
   {
-    "audio_path": "/Users/mihailgorbunov/dla/as/dla2023_as/test_audio/hw4/audio_3_generated.wav",
+    "audio_path": "/Users/mihailgorbunov/dla/as/dla2023_as/test_audio/hw4/audio_1_generated.wav",
     "is_spoofed": -1,
-    "is_spoofed_pred_prob": 0.23051154613494873
-  },
-  {
-    "audio_path": "/Users/mihailgorbunov/dla/as/dla2023_as/test_audio/hw4/audio_2_generated.wav",
-    "is_spoofed": -1,
-    "is_spoofed_pred_prob": 0.0005014793714508414
-  },
-  {
-    "audio_path": "/Users/mihailgorbunov/dla/as/dla2023_as/test_audio/hw4/audio_2.wav",
-    "is_spoofed": -1,
-    "is_spoofed_pred_prob": 0.00023707961372565478
+    "is_spoofed_pred_prob": 0.9994434714317322
   },
   {
     "audio_path": "/Users/mihailgorbunov/dla/as/dla2023_as/test_audio/hw4/audio_3.wav",
     "is_spoofed": -1,
-    "is_spoofed_pred_prob": 2.304507142980583e-05
+    "is_spoofed_pred_prob": 0.9999769926071167
+  },
+  {
+    "audio_path": "/Users/mihailgorbunov/dla/as/dla2023_as/test_audio/hw4/audio_3_generated.wav",
+    "is_spoofed": -1,
+    "is_spoofed_pred_prob": 0.7694884538650513
+  },
+  {
+    "audio_path": "/Users/mihailgorbunov/dla/as/dla2023_as/test_audio/hw4/audio_2.wav",
+    "is_spoofed": -1,
+    "is_spoofed_pred_prob": 0.9997629523277283
+  },
+  {
+    "audio_path": "/Users/mihailgorbunov/dla/as/dla2023_as/test_audio/hw4/audio_2_generated.wav",
+    "is_spoofed": -1,
+    "is_spoofed_pred_prob": 0.9994984865188599
   }
 ]
