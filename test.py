@@ -51,14 +51,8 @@ def main(config, out_file):
             else:
                 batch["logits"] = output
             batch["log_probs"] = torch.log_softmax(batch["logits"], dim=-1)
-            batch["log_probs_length"] = model.transform_input_lengths(
-                batch["spectrogram_length"]
-            )
             batch["probs"] = batch["log_probs"].exp().cpu()
-            batch["argmax"] = batch["probs"].argmax(-1)
-            for i in range(len(batch["text"])):
-                argmax = batch["argmax"][i]
-                argmax = argmax[: int(batch["log_probs_length"][i])]
+            for i in range(len(batch["audio_path"])):
                 results.append(
                     {
                         "audio_path": batch["audio_path"][i],
@@ -151,10 +145,8 @@ if __name__ == "__main__":
                     {
                         "type": "CustomDirAudioDataset",
                         "args": {
-                            "audio_dir": str(test_data_folder / "audio"),
-                            "transcription_dir": str(
-                                test_data_folder / "transcriptions"
-                            ),
+                            "audio_dir": str(test_data_folder),
+                            "max_len": 64000
                         },
                     }
                 ],

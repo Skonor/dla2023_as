@@ -6,7 +6,7 @@ import torchaudio
 logger = logging.getLogger(__name__)
 
 
-class CustomDirAudioTestDataset(Dataset):
+class CustomDirAudioDataset(Dataset):
     def __init__(self, audio_dir, max_len=None, limit=None, *args, **kwargs):
         super().__init__()
         data = []
@@ -20,11 +20,12 @@ class CustomDirAudioTestDataset(Dataset):
                 data = data[:limit]
 
         self.data = data
+        self.max_len = max_len
     def __len__(self):
         return len(self.data)
     
     def __getitem__(self, index):
-        audio_path = self.data[index]
+        audio_path = self.data[index]["path"]
         audio_tensor, sr = torchaudio.load(audio_path)
         audio_tensor = audio_tensor[0:1, :]
         if self.max_len is not None:
